@@ -12,7 +12,7 @@
     <div class="text-center mb-6">
       <img src="1001215411.jpg" alt="Okash Loans Logo" class="w-16 h-16 mx-auto mb-2 rounded-full shadow" />
       <h1 class="text-2xl font-bold text-green-800">Other Details</h1>
-      <p class="text-sm text-gray-600">Help us better understand your loan needs</p>
+      <p class="text-sm text-gray-600">Fill in your background and referee info</p>
     </div>
 
     <form id="otherDetailsForm" class="space-y-4" onsubmit="handleSubmit(event)">
@@ -44,8 +44,12 @@
         <option value="Personal Use">Personal Use</option>
       </select>
 
+      <!-- Referee Name -->
+      <input id="refereeName" type="text" placeholder="Referee Full Name" required
+             class="w-full p-3 border border-green-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-green-500" />
+
       <!-- Referee Contact -->
-      <input id="refereeContact" type="tel" placeholder="Referee Contact Number" required
+      <input id="refereeContact" type="tel" placeholder="Referee Phone Number" required
              class="w-full p-3 border border-green-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-green-500" />
 
       <!-- Referee Relationship -->
@@ -62,17 +66,18 @@
       </button>
     </form>
 
-    <p class="text-xs text-center text-gray-500 mt-4">Your information is secure with Okash Loans.</p>
+    <p class="text-xs text-center text-gray-500 mt-4">Your details are secure with Okash Loans.</p>
   </div>
 
   <script>
     function handleSubmit(e) {
       e.preventDefault();
 
-      // Save to localStorage
+      // Store in localStorage
       localStorage.setItem("education", document.getElementById("education").value);
       localStorage.setItem("employment", document.getElementById("employment").value);
       localStorage.setItem("loanPurpose", document.getElementById("loanPurpose").value);
+      localStorage.setItem("refereeName", document.getElementById("refereeName").value);
       localStorage.setItem("refereeContact", document.getElementById("refereeContact").value);
       localStorage.setItem("refereeRelationship", document.getElementById("refereeRelationship").value);
 
