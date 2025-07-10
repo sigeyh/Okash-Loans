@@ -2,88 +2,88 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Check Limit - Okash Loans</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Other Details - Okash Loans</title>
   <script src="https://cdn.tailwindcss.com"></script>
 </head>
 <body class="bg-gradient-to-tr from-green-900 via-green-600 to-green-300 min-h-screen flex items-center justify-center p-4 text-green-900">
 
-  <div class="w-full max-w-sm bg-white/90 backdrop-blur-md rounded-2xl shadow-2xl p-6 relative">
-
-    <!-- Header -->
+  <div class="w-full max-w-sm bg-white/90 backdrop-blur-md rounded-2xl shadow-2xl p-6">
     <div class="text-center mb-6">
-      <img src="1001215411.jpg" alt="Okash Logo" class="w-16 h-16 mx-auto mb-2 rounded-full shadow" />
-      <h2 class="text-xl font-bold text-green-800">Check Your Loan Limit</h2>
-      <p class="text-sm text-gray-700">Choose the loan amount you'd like to apply for</p>
+      <img src="1001215411.jpg" alt="Okash Loans Logo" class="w-16 h-16 mx-auto mb-2 rounded-full shadow" />
+      <h1 class="text-2xl font-bold text-green-800">Other Details</h1>
+      <p class="text-sm text-gray-600">Fill in your background and referee info</p>
     </div>
 
-    <!-- Loan Info -->
-    <div class="bg-green-100 p-4 rounded-xl mb-4 text-sm text-green-800 border border-green-300">
-      <p><strong>Loan Amount:</strong> Ksh <span id="loanAmountDisplay">--</span></p>
-      <p><strong>Processing Fee (3%):</strong> Ksh <span id="processingFeeDisplay">--</span></p>
-    </div>
+    <form id="otherDetailsForm" class="space-y-4" onsubmit="handleSubmit(event)">
+      
+      <!-- Education Level -->
+      <select id="education" required class="w-full p-3 border border-green-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-green-500">
+        <option value="">-- Select Education Level --</option>
+        <option value="Primary">Primary</option>
+        <option value="Secondary">Secondary</option>
+        <option value="College">College</option>
+        <option value="University">University</option>
+      </select>
 
-    <!-- Slider -->
-    <input type="range" id="loanSlider" min="4500" max="8500" step="100"
-           class="w-full accent-green-700 mb-2"
-           oninput="updateLoanDisplay(this.value)" />
+      <!-- Employment Status -->
+      <select id="employment" required class="w-full p-3 border border-green-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-green-500">
+        <option value="">-- Employment Status --</option>
+        <option value="Employed">Employed</option>
+        <option value="Self-Employed">Self-Employed</option>
+        <option value="Unemployed">Unemployed</option>
+        <option value="Student">Student</option>
+      </select>
 
-    <button onclick="showPopup()" class="w-full bg-green-700 hover:bg-green-800 text-white font-semibold py-3 rounded-xl transition mt-3">
-      Continue
-    </button>
-  </div>
+      <!-- Loan Purpose -->
+      <select id="loanPurpose" required class="w-full p-3 border border-green-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-green-500">
+        <option value="">-- Purpose of Loan --</option>
+        <option value="Business">Business</option>
+        <option value="Emergency">Emergency</option>
+        <option value="School Fees">School Fees</option>
+        <option value="Personal Use">Personal Use</option>
+      </select>
 
-  <!-- Popup Modal -->
-  <div id="popupOverlay" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 hidden">
-    <div class="bg-white text-green-900 rounded-2xl p-6 w-11/12 max-w-sm text-center shadow-xl relative">
-      <button onclick="closePopup()" class="absolute top-2 right-3 text-xl text-gray-400 hover:text-red-500">&times;</button>
-      <h2 class="text-xl font-bold mb-2">Hi, <span id="userName">User</span></h2>
-      <p class="text-sm mb-4">
-        To proceed, <strong>OKASH LOANS</strong> requires you to make a one-time processing fee payment of
-        <span class="font-bold text-green-700" id="popupFee">Ksh ...</span> for your approved loan of
-        <span class="font-bold text-green-700" id="popupLoan">Ksh ...</span>.
-      </p>
-      <button onclick="goToVerification()" class="bg-green-700 hover:bg-green-800 text-white py-2 px-6 rounded-xl shadow-md transition">
-        Proceed to Payment
+      <!-- Referee Name -->
+      <input id="refereeName" type="text" placeholder="Referee Full Name" required
+             class="w-full p-3 border border-green-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-green-500" />
+
+      <!-- Referee Contact -->
+      <input id="refereeContact" type="tel" placeholder="Referee Phone Number" required
+             class="w-full p-3 border border-green-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-green-500" />
+
+      <!-- Referee Relationship -->
+      <select id="refereeRelationship" required class="w-full p-3 border border-green-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-green-500">
+        <option value="">-- Referee Relationship --</option>
+        <option value="Parent">Parent</option>
+        <option value="Sibling">Sibling</option>
+        <option value="Friend">Friend</option>
+        <option value="Colleague">Colleague</option>
+      </select>
+
+      <button type="submit" class="w-full bg-green-700 hover:bg-green-800 text-white font-semibold py-3 rounded-xl transition duration-300 shadow-lg">
+        Continue
       </button>
-    </div>
+    </form>
+
+    <p class="text-xs text-center text-gray-500 mt-4">Your details are secure with Okash Loans.</p>
   </div>
 
   <script>
-    const fullName = localStorage.getItem("fullName") || "User";
-    document.getElementById("userName").textContent = fullName;
+    function handleSubmit(e) {
+      e.preventDefault();
 
-    // Initial random loan
-    const randomLoan = Math.floor(Math.random() * (8500 - 4500 + 1)) + 4500;
-    const slider = document.getElementById("loanSlider");
-    slider.value = randomLoan;
+      // Store in localStorage
+      localStorage.setItem("education", document.getElementById("education").value);
+      localStorage.setItem("employment", document.getElementById("employment").value);
+      localStorage.setItem("loanPurpose", document.getElementById("loanPurpose").value);
+      localStorage.setItem("refereeName", document.getElementById("refereeName").value);
+      localStorage.setItem("refereeContact", document.getElementById("refereeContact").value);
+      localStorage.setItem("refereeRelationship", document.getElementById("refereeRelationship").value);
 
-    function updateLoanDisplay(amount) {
-      const fee = Math.round(amount * 0.03);
-      document.getElementById("loanAmountDisplay").textContent = parseInt(amount).toLocaleString();
-      document.getElementById("processingFeeDisplay").textContent = fee.toLocaleString();
-      document.getElementById("popupLoan").textContent = "Ksh " + parseInt(amount).toLocaleString();
-      document.getElementById("popupFee").textContent = "Ksh " + fee.toLocaleString();
-
-      localStorage.setItem("loanAmount", amount);
-      localStorage.setItem("processingFee", fee);
+      // Redirect
+      window.location.href = "checklimit.html";
     }
-
-    function showPopup() {
-      updateLoanDisplay(slider.value);
-      document.getElementById("popupOverlay").classList.remove("hidden");
-    }
-
-    function closePopup() {
-      document.getElementById("popupOverlay").classList.add("hidden");
-    }
-
-    function goToVerification() {
-      window.location.href = "verification.html";
-    }
-
-    // Initialize with random loan
-    updateLoanDisplay(randomLoan);
   </script>
 
 </body>
