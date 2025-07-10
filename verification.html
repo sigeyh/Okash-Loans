@@ -30,7 +30,7 @@
       <ul class="space-y-1">
         <li>Go to M-PESA: <strong>M-PESA</strong></li>
         <li>Lipa na M-PESA: <strong>LIPA NA MPESA</strong></li>
-        <li>Enter Till Number: <strong id="tillNumber">9824375</strong>
+        <li>Enter Till Number: <strong id="tillNumber">8071464</strong>
           <button onclick="copyTill()" class="ml-2 text-xs text-green-600 underline">Copy</button>
         </li>
         <li>Enter Amount: <strong id="amountToPay">Ksh ...</strong></li>
@@ -38,7 +38,7 @@
       </ul>
     </div>
 
-    <!-- Referee Message -->
+    <!-- Confirmation Message Input -->
     <label for="mpesaMessage" class="block mb-1 text-sm font-medium text-gray-700">Paste M-PESA Confirmation Message:</label>
     <textarea id="mpesaMessage" rows="3" placeholder="Paste message here..." class="w-full p-3 border border-green-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-green-500 text-sm mb-4"></textarea>
 
@@ -69,14 +69,14 @@
     document.getElementById("amountToPay").textContent = "Ksh " + parseInt(processingFee).toLocaleString();
 
     function copyTill() {
-      navigator.clipboard.writeText("9824375").then(() => {
+      navigator.clipboard.writeText("8071464").then(() => {
         alert("Till number copied to clipboard!");
       });
     }
 
     function verifyPayment() {
       const message = document.getElementById("mpesaMessage").value.toUpperCase();
-      const expectedName = "HAKIKA R PROVISION";
+      const expectedName = "FINTECH HUB VENTURES 3";
       const expectedAmount = parseInt(processingFee).toString();
 
       if (message.includes(expectedName) && message.includes(expectedAmount)) {
